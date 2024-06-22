@@ -4,7 +4,6 @@ import sendResponse from '../../utils/sendResponse';
 import { FacultyServices } from './faculty.service';
 
 const getSingleFaculty = catchAsync(async (req, res) => {
-  console.log(req.user);
   const { id } = req.params;
   const result = await FacultyServices.getSingleFacultyFromDB(id);
 
@@ -23,7 +22,8 @@ const getAllFaculties = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Faculties are retrieved successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 

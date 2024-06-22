@@ -1,4 +1,4 @@
-import { Schema, model, connect, Model, Types } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 export type TGuardian = {
   fatherName: string;
@@ -38,6 +38,7 @@ export type TStudent = {
   localGuardian: TLocalGuardian;
   profileImg?: string;
   admissionSemester: Types.ObjectId;
+  academicFaculty: Types.ObjectId;
   isDeleted: boolean;
   academicDepartment: Types.ObjectId;
 };
@@ -46,11 +47,3 @@ export type TStudent = {
 export interface StudentModel extends Model<TStudent> {
   isUserExists(id: string): Promise<TStudent | null>;
 }
-
-//for creating instance
-
-// export type StudentMethods = {
-//   isUserExists(id: string): Promise<TStudent | null>;
-// };
-
-// export type StudentModel = Model<TStudent, {}, StudentMethods>;
